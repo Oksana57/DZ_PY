@@ -1,7 +1,6 @@
-text = input('введи текст: ')
-if str.isdigit(text):
-    print(bin(int(text)), oct(int(text)), hex(int(text)))
-elif str.isascii(text):
-    print('текст содержит ASCII')
+f = [1,2]
+f = str(f)
+if hash(f):
+    print(type(f))
 else:
-    print('текст содержит не только символы ASCII')
+    print('gg')
