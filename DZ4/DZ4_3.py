@@ -9,48 +9,48 @@ MAX_TAKE = 600
 PROCENT_INCOM = 0.03
 LIMIT_FOR_TAX = 5_000_000
 PROCENT_TAX = 0.1
-#get_give_lst = []
 
-def get_money(balance: Decimal, get_give_lst: list):
+
+def get_money(balance: Decimal):
     money_to_get = Decimal(input('введите количетво денег: '))
     procent_geting = money_to_get * Decimal(PROCENT_COMIS)
+
     if MIN_TAKE < procent_geting < MAX_TAKE:
         procent_geting = procent_geting
     elif MIN_TAKE > procent_geting:
         procent_geting = MIN_TAKE
     else:
         procent_geting = MAX_TAKE
+        
     
     if money_to_get // MIN_SUM:
         if money_to_get + procent_geting <= balance:
+           get_give_lst.append(str(-1*money_to_get)) 
            print(balance)
-           get_give_lst.append(-1*money_to_get)
-           return balance - (money_to_get + procent_geting); get_give_lst
+           return balance - (money_to_get + procent_geting)
         else:
             print("недостаточно денег")
             print(balance)
+       
     else:
-        get_give_lst.append(-1*money_to_get)
         print(f'сумма должна быть кратной {MIN_SUM}')
         print(balance)
         print(get_give_lst)
-        return balance, get_give_lst  
+        return balance
 
 
-def give_money(balance: Decimal, get_give_lst: list):
+def give_money(balance: Decimal):
     money_to_give = Decimal(input('введите количетво денег: '))
     if money_to_give // MIN_SUM:
-        get_give_lst.append(money_to_give) 
-        return balance + money_to_give; get_give_lst
+        get_give_lst.append(str(money_to_give) )
+        return balance + money_to_give
         print(balance)
     else:
-       
         print(f'сумма должна быть кратной {MIN_SUM}')
            
     print(balance)
     #print(get_give_lst)
-    return balance; get_give_lst 
-
+    return balance
 
 def menu(balance: Decimal, count: int, is_flag: bool, get_give_lst: list):
     if balance > LIMIT_FOR_TAX:
@@ -60,20 +60,17 @@ def menu(balance: Decimal, count: int, is_flag: bool, get_give_lst: list):
              '3' : 'выйти'}
     
     for k, v in dict1.items():
-        
         print(f'{k},{v}')
             
     choise = input('введите команду: ')
-    
     if choise == '3':
-        
         print("До свиданья")
         is_flag = False
     elif choise == '1':
-        balance = get_money(balance, get_give_lst)
+        balance = get_money(balance)
         count+=1
     elif choise == '2':
-        balance = give_money(balance, get_give_lst)
+        balance = give_money(balance)
         count+=1
     else:
         print('неверная комнда')
@@ -82,7 +79,6 @@ def menu(balance: Decimal, count: int, is_flag: bool, get_give_lst: list):
     print(balance)
     print(get_give_lst) 
     return balance, is_flag
-
 
 
 if __name__ == '__main__':
@@ -94,4 +90,3 @@ if __name__ == '__main__':
      is_flag = True
      while is_flag:
         balance, is_flag = menu(balance, count, is_flag, get_give_lst)
-
