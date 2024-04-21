@@ -19,13 +19,29 @@ from DZ6.chess.DZ6_2 import queens
 
 queens_list = []
 #list3 = []
-while len(queens_list) <= 3:
+#while len(queens_list) <= 3:
     
-    var1 = generate_queens()
-    #try :
-    if queens(var1) is True:
-        continue    
-    else:
-        queens_list.append(var1) 
+f = generate_queens()
+#try :
+hit = False
 
-print(queens_list)
+for i in range(8):
+    x1 = f[i][0]
+    y1 = f[i][1]
+    for ii in range(i+1, 8):
+        x2 = f[ii][0]
+        y2 = f[ii][1]
+        if x1 == x2 or y1 == y2 or abs(y2 - y1) == abs(x2 - x1):
+            hit = True
+if hit:
+    print(f)
+    print('YES')
+else:
+    print(f)
+    print('NO')
+#     if queens(var1) is True:
+#         continue    
+#     else:
+#         queens_list.append(var1) 
+
+# print(queens_list)

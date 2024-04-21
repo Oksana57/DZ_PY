@@ -23,9 +23,10 @@ def queens(n):
             if x[i] == x[j] or y[i] == y[j] or abs(x[i] - x[j]) == abs(y[i] - y[j]):
                 correct = False
     if correct:
-        return False
-    else:
         return True
+    else:
+        return False
+
 
 if __name__ == '__main__':  
-    print(queens([(0, 3), (1, 7), (2, 0), (3, 2), (4, 5), (5, 1), (6, 6), (7, 4)]))
+    print(queens([(6, 0), (7, 0), (2, 6), (5, 2), (6, 2), (6, 1), (5, 7), (7, 6)]))
