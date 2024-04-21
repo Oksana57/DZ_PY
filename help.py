@@ -1,19 +1,31 @@
-name_list = input('Введите 4 имени через пробел: ').split()
-rate_list = input('Введите 4 ставки через пробел: ').split()
-rate_list = [int(i) for i in rate_list]
-bonus_list = input('Введите 4 премии через пробел вида 10.25%: ').replace('%', '').split()
-bonus_list = [float(i) for i in bonus_list]
+#import itertools
+from DZ6.chess.DZ6_3 import generate_queens
+from DZ6.chess.DZ6_2 import queens
+# f = [(0, 3), (1, 7), (2, 0), (3, 2), (4, 5), (5, 1), (6, 6), (7, 4)]
+# hit = False
 
-list1 = []
-for i in range(len(rate_list)):
-    list1.append(rate_list[i]*bonus_list[i]/100)
+# for i in range(8):
+#     x1 = f[i][0]
+#     y1 = f[i][1]
+#     for ii in range(i+1, 8):
+#         x2 = f[ii][0]
+#         y2 = f[ii][1]
+#         if x1 == x2 or y1 == y2 or abs(y2 - y1) == abs(x2 - x1):
+#             hit = True
+# if hit:
+#     print('YES')
+# else:
+#     print('NO')
 
-#print(list1)
-res={}
-for i in range(len(name_list)):
-    res[name_list[i]] = list1[i]
-#print(res)
-list1 = [rate_list[i]*bonus_list[i]/100 for i in range(len(rate_list))]
-#gen1 = {name_list[i]: list1[i] for i in range(len(name_list))} 
-gen1 = {name_list[i]: list(rate_list[i]*bonus_list[i]/100 for i in range(len(rate_list)))[i] for i in range(len(name_list))} 
-print(list1, gen1)
+queens_list = []
+#list3 = []
+while len(queens_list) <= 3:
+    
+    var1 = generate_queens()
+    #try :
+    if queens(var1) is True:
+        continue    
+    else:
+        queens_list.append(var1) 
+
+print(queens_list)
