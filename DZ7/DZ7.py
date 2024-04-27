@@ -9,7 +9,7 @@ e. принимать диапазон сохраняемого оригинал
 
 import os
 
-def rename_files(new_name: str, 
+ef rename_files(new_name: str, 
                 count_number: int, 
                 old_extention: str, 
                 new_extention: str, 
@@ -17,26 +17,23 @@ def rename_files(new_name: str,
                 directory: str):
     if count_number == 1:
          n_min = 0
-         n_max = 10
     elif count_number == 2:
         n_min = 10
-        n_max = 100
     else:
         n_min = 100
-        n_max = 1000
-    for i in range(n_min, n_max):
-        for f in os.listdir(directory):
-            f0 = f.rsplit('.')[-1]
-            if f0 == old_extention:
-                f1 = f.split('.')[0:]
-                #f2 = f1[3: 6]
-                f2 = f1[range_letter[0]: range_letter[1]]                
-                f3 = f'{f2}{new_name}{i}'
-                l = list[f3, new_extention]
-                new_f = str(f3)+'.'+str(new_extention)
-                os.rename(f'{directory}/{f}', f'{directory}/{new_f}')
-            else: 
-                continue    
+    i = n_min
+    for f in os.listdir(directory):       
+        f0 = f.rsplit('.')[-1]      
+        if f0 == old_extention:
+            f1 = f.split('.')[0]                
+            f2 = f1[range_letter[0]: range_letter[1]]                
+            f3 = f'{f2}{new_name}{i}'
+            l = list[f3, new_extention]
+            new_f = str(f3)+'.'+str(new_extention)
+            os.rename(f'{directory}/{f}', f'{directory}/{new_f}')
+        else: 
+            continue 
+        i+=1    
 
 
 if __name__ == "__main__":
