@@ -24,4 +24,8 @@ def write_json_csv_pickle(directory):
         pickle.dump(result_dict_json, pickle_file)
 
 
+<<<<<<< HEAD
 write_json_csv_pickle(directory='files')
+=======
+write_json_csv_pickle(directory='directory')
+>>>>>>> 4dfdf335e739882a963c4ab50245020547631fe3
